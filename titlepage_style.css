@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('Fonts/Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reset and General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Full-Page Background Image */
+body {
+    background: url('media/home copy.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title Container */
+.title_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+/* Title Image */
+.title-image {
+    width: 175%;
+    max-width: 1350px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    position: relative; /* Needed for ripple effect */
+    border: none;
+    font-size: 20px;
+    padding: 15px 50px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+/* Play Button - Uses Minecraft Font */
+.play-btn {
+    background-color: #FFD34E;
+    color: #5E17EB;
+    font-weight: bold;
+    font-family: "Minecraft";
+    font-size: 35px;
+    padding: 15px 175px;
+    margin-top: -30px;
+    margin-bottom: 70px;
+    border-radius: 20px;
+}
+
+/* Info Buttons */
+.info-btn {
+    background-color: #fff;
+    color: #5E17EB;
+    font-family: "Minecraft";
+    font-size: 18px;
+    padding: 12px 110px;
+    border-radius: 50px;
+}
+
+/* Specific style for Credits button */
+.credits-btn {
+    background-color: #fff; /* Keep it same as info button */
+    color: #5E17EB;
+    font-family: "Minecraft";
+    font-size: 18px; /* Increase size */
+    padding: 12px 105px; /* Adjust padding */
+    border-radius: 50px;
+}
+
+
+/* Hover Effects */
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ripple Effect */
+button::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(94, 23, 235, 0.8);
+    display: block;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+button:active::after {
+    transform: scale(3);
+    opacity: 1;
+}
