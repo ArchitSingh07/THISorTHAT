@@ -1,0 +1,154 @@
+:root {
+    --left-question-btn-width: 350px;
+    --left-question-btn-height: 220px;
+    --left-question-btn-radius: 50px;
+  
+    --right-question-btn-width: 350px;
+    --right-question-btn-height: 220px;
+    --right-question-btn-radius: 50px;
+  
+    --left-text-box-width: 20%;
+    --left-text-box-height: 50px;
+    --left-text-box-radius: 25px;
+  
+    --right-text-box-width: 20%;
+    --right-text-box-height: 50px;
+    --right-text-box-radius: 25px;
+  
+    --next-btn-width: 180px;
+    --next-btn-height: 60px;
+    --next-btn-bg: #C9FD06;
+    --next-btn-text: #5E17EB;
+    --next-btn-radius: 40px;
+  }
+
+  @font-face {
+    font-family: 'Minecraft';
+    src: url('Fonts/Minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+  /* Remove margins & overflow */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .container-fluid, .row {
+    height: 100vh;
+  }
+  
+  /* Left Side - Purple */
+  .left-column {
+    background-color: #5E17EB;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* Right Side - Yellow */
+  .right-column {
+    background-color: #FFDE59;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* Video Overlay */
+  .background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    filter: contrast(1) brightness(0.99);
+  }
+  
+  /* Question Button Base Style */
+  .question-btn {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Minecraft";
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Left Question Button */
+  #left-question-btn {
+    width: var(--left-question-btn-width);
+    height: var(--left-question-btn-height);
+    background-color: #FFDE59;
+    color: black;
+    border-radius: var(--left-question-btn-radius);
+  }
+  
+  /* Right Question Button */
+  #right-question-btn {
+    width: var(--right-question-btn-width);
+    height: var(--right-question-btn-height);
+    background-color: black;
+    color: white;
+    border-radius: var(--right-question-btn-radius);
+  }
+  
+  /* Text Box Base Style */
+  .text-box {
+    font-size: 20px;
+    font-family: "Minecraft";
+    text-align: center;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Left Text Box */
+  #left-text-box {
+    width: var(--left-text-box-width);
+    height: var(--left-text-box-height);
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border-radius: var(--left-text-box-radius);
+  }
+  
+  /* Right Text Box */
+  #right-text-box {
+    width: var(--right-text-box-width);
+    height: var(--right-text-box-height);
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    border-radius: var(--right-text-box-radius);
+  }
+  
+  /* Next Button */
+  #next-button {
+    width: var(--next-btn-width);
+    height: var(--next-btn-height);
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Minecraft";
+    text-transform: uppercase;
+    background-color: var(--next-btn-bg);
+    color: var(--next-btn-text);
+    border: none;
+    border-radius: var(--next-btn-radius);
+    transition: all 0.3s ease-in-out;
+  
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  
+  #next-button:hover {
+    background-color: #B5E905;
+  }
+  
