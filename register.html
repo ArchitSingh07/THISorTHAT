@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - This or That</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'Minecraft';
+      src: url('Fonts/Minecraft.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      background-color: #3B00CC;
+      margin: 0;
+      padding: 0;
+      font-family: 'Minecraft', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      border: 5px solid #FFD700;
+      border-radius: 12px;
+      width: 400px;
+      padding: 40px;
+      box-shadow: 8px 8px 0px #000;
+      text-align: center;
+      position: relative;
+    }
+
+    .login-logo {
+      width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .login-title {
+      font-size: 28px;
+      color: #3B00CC;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px #FFD700;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 3px solid #FFD700;
+      font-size: 18px;
+      border-radius: 5px;
+      font-family: 'Minecraft', sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background-color: #00FF00;
+      border: none;
+      color: #3B00CC;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #000;
+    }
+
+    .login-button:hover {
+      background-color: #FFD700;
+    }
+
+    .login-footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #3B00CC;
+    }
+
+    .login-footer a {
+      color: #3B00CC;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .social-icons img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #ccc;
+      padding: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-icons img:hover[alt="Google"] {
+      background-color: #d44638;
+    }
+
+    .social-icons img:hover[alt="GitHub"] {
+      background-color: #6e5494;
+    }
+
+    .social-icons img:hover[alt="Facebook"] {
+      background-color: #3b5998;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <img src="media/logo.png" alt="Logo" class="login-logo">
+    <div class="login-title">PLAYER REGISTRATION</div>
+
+    <input type="text" class="input-box" placeholder="Username" />
+    <input type="email" class="input-box" placeholder="Email" />
+    <input type="password" class="input-box" placeholder="Password" />
+    <input type="password" class="input-box" placeholder="Confirm Password" />
+
+    <button class="login-button">REGISTER</button>
+
+    <div class="login-footer">
+      <p><a href="login.html">Already have an account? Sign In</a></p>
+      <p>or sign up with</p>
+      <div class="social-icons">
+        <img src="media/google.png" alt="Google" />
+        <img src="media/git.png" alt="GitHub" />
+        <img src="media/fb.png" alt="Facebook" />
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
