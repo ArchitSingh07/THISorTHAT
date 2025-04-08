@@ -91,7 +91,7 @@
   #right-question-btn {
     width: var(--right-question-btn-width);
     height: var(--right-question-btn-height);
-    background-color: black;
+    background-color: #5E17EB;
     color: white;
     border-radius: var(--right-question-btn-radius);
   }
@@ -151,4 +151,20 @@
   #next-button:hover {
     background-color: #B5E905;
   }
+
+  .or-logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    pointer-events: none;
+  }
+  
+  .or-logo {
+    width: 120px;
+    height: auto;
+    opacity: 0.95;
+  }
+  
   
