@@ -44,3 +44,11 @@ window.animateQuestionCards = function(callback) {
     }, 400);
   }, 400);
 };
+ window.transitionToMain = function () {
+  const page = document.querySelector(".content");
+  page.classList.add("bob-up-exit");
+
+  setTimeout(() => {
+    window.location.href = "main_page.html";
+  }, 1000); // Match animation duration
+};

@@ -85,7 +85,7 @@
 
     .nav-buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       margin: 20px auto 0 auto;
       width: 95%;
       max-width: 1000px;
@@ -102,6 +102,22 @@
       cursor: pointer;
       font-family: 'Minecraft', monospace;
     }
+      @keyframes bobUp {
+   0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+.bob-up-exit {
+  animation: bobUp 1s ease-in-out forwards;
+}
+
   </style>
 </head>
 <body>
@@ -134,11 +150,10 @@
     </div>
 
     <div class="nav-buttons">
-      <button>PREV</button>
-      <button>NEXT</button>
+      <button id="review-next-btn" onclick="transitionToMain()">NEXT</button>
     </div>
 
-  </div>
-
+  </div>  
+<script src="js/anims.js"></script>
 </body>
 </html>
