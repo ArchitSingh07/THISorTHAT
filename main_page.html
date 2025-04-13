@@ -34,10 +34,24 @@
     </video>
 
     <!-- Next Button -->
-    <button class="btn next-btn" id="next-button">NEXT</button>
+    <button class="btn next-btn" id="next-button" onclick="animateQuestionCards()">NEXT</button>
   </div>
   <div class="or-logo-container">
     <img src="media/OR_LOGO-removebg.png" alt="OR Logo" class="or-logo">
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (sessionStorage.getItem("fromTitle") === "yes") {
+        const orLogo = document.querySelector(".or-logo");
+        orLogo.classList.add("logo-fly-in");
+        sessionStorage.removeItem("fromTitle");
+      }
+    });
+  </script>
+
+
+
+
+<script src="js/anims.js"></script>
 </body>
 </html>

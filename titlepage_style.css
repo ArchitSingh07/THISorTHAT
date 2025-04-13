@@ -117,3 +117,18 @@ button:active::after {
     transform: scale(3);
     opacity: 1;
 }
+.fade-to-or {
+    animation: fadeToOR 1s ease forwards;
+}
+
+@keyframes fadeToOR {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+}

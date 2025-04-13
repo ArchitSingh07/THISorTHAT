@@ -166,5 +166,58 @@
     height: auto;
     opacity: 0.95;
   }
+  .logo-fly-in {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: logoEnter 0.9s ease-out forwards;
+  }
+
+    @keyframes logoEnter {
+      0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+      }
   
-  
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+.fade-left-out {
+  animation: slideOutLeft 0.4s forwards;
+}
+
+.fade-right-out {
+  animation: slideOutRight 0.4s forwards;
+}
+
+.fade-behind-in {
+  animation: fadeBehindIn 0.4s forwards;
+}
+
+@keyframes slideOutLeft {
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutRight {
+  to {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeBehindIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
