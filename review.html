@@ -118,6 +118,48 @@
   animation: bobUp 1s ease-in-out forwards;
 }
 
+#profile-icon {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.profile-card {
+  position: fixed;
+  top: 65px;
+  right: 15px;
+  padding: 15px 25px;
+  background-color: #5E17EB;
+  border: 3px solid #FFDE59;
+  border-radius: 12px;
+  color: white;
+  font-family: 'Minecraft', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.profile-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+.profile-card button {
+  margin-top: 10px;
+  background-color: #FFDE59;
+  color: #5E17EB;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -154,6 +196,52 @@
     </div>
 
   </div>  
+  <!-- Profile Icon Button -->
+  <img src="media/profile-modified.png" id="profile-icon" onclick="toggleProfileCard()" />
+  
+  <!-- Profile Card -->
+  <div id="profile-card" class="profile-card hidden">
+    <div class="profile-info">
+      <h3 id="profile-name">Username</h3>
+      <p id="profile-email">email@example.com</p>
+      <p>Uniqueness: <span id="profile-score">1000</span></p>
+    </div>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+  
+  
+  
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("php/profile_info.php")
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            const user = data.user;
+            document.getElementById("profile-name").textContent = user.username;
+            document.getElementById("profile-email").textContent = user.email;
+            document.getElementById("profile-score").textContent = user.uniqueness_score;
+          } else {
+            alert("Session expired. Please login again.");
+            window.location.href = "login.html";
+          }
+        });
+    });
+
+    function toggleProfileCard() {
+      document.getElementById("profile-card").classList.toggle("hidden");
+    }
+
+    function logoutUser() {
+      fetch("php/logout.php")
+        .then(() => {
+          window.location.href = "login.html";
+        });
+    }
+
+  </script>
 <script src="js/anims.js"></script>
 </body>
 </html>

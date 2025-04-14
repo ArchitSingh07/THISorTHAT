@@ -19,6 +19,53 @@
         <button class="info-btn">About</button>
         <button class="credits-btn">Credits</button>
     </div>
+
+<!-- Profile Icon Button -->
+<img src="media/profile-modified.png" id="profile-icon" onclick="toggleProfileCard()" />
+
+<!-- Profile Card -->
+<div id="profile-card" class="profile-card hidden">
+    <div class="profile-info">
+        <h3 id="profile-name">Username</h3>
+        <p id="profile-email">email@example.com</p>
+        <p>Uniqueness: <span id="profile-score">1000</span></p>
+    </div>
+    <button onclick="logoutUser()">Logout</button>
+</div>
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch("php/profile_info.php")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const user = data.user;
+                    document.getElementById("profile-name").textContent = user.username;
+                    document.getElementById("profile-email").textContent = user.email;
+                    document.getElementById("profile-score").textContent = user.uniqueness_score;
+                } else {
+                    alert("Session expired. Please login again.");
+                    window.location.href = "login.html";
+                }
+            });
+    });
+
+    function toggleProfileCard() {
+        document.getElementById("profile-card").classList.toggle("hidden");
+    }
+
+    function logoutUser() {
+        fetch("php/logout.php")
+            .then(() => {
+                window.location.href = "login.html";
+            });
+    }
+
+</script>
 <script src="js/anims.js"></script>
 </body>
 </html>
