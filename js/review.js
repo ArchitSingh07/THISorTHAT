@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  animateReviewEntry();
   const review = JSON.parse(sessionStorage.getItem("lastReview"));
   const rows = document.querySelectorAll(".review-table tr");
   if (!review) return;

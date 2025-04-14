@@ -1,3 +1,4 @@
+console.log("Anims.js");
 function startTransition() {
   const logo = document.getElementById('title-logo');
   logo.classList.add('fade-to-or');
@@ -51,4 +52,11 @@ window.animateQuestionCards = function(callback) {
   setTimeout(() => {
     window.location.href = "main_page.html";
   }, 1000); // Match animation duration
+};
+window.animateReviewEntry = function () {
+  console.log("Animation triggered!");
+  const content = document.querySelector(".content");
+  if (content) {
+    content.classList.add("review-appear");
+  }
 };

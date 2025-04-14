@@ -32,11 +32,10 @@ $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUE
 $stmt->bind_param("sss", $username, $email, $hash);
 
 if ($stmt->execute()) {
-  $_SESSION['user_id'] = $stmt->insert_id;
-  $_SESSION['username'] = $username;
-  header("login.php");
+  header("Location: ../login.html");
   exit;
-} else {
+}
+ else {
   echo "Registration failed.";
 }
 ?>

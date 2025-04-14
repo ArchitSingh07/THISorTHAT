@@ -3,7 +3,7 @@ let uniquenessScore = 1000;
 let userAnswers = [];
 
 function loadQuestion() {
-  fetch("php/get_question.php")
+  fetch("php/get_question.php") 
     .then(res => res.json())
     .then(q => {
       currentQuestion = q;
@@ -12,31 +12,33 @@ function loadQuestion() {
 
       document.getElementById("left-text-box").textContent = "";
       document.getElementById("right-text-box").textContent = "";
+
     });
 }
 
 function submitVote(choice) {
   if (!currentQuestion) return;
-
+  
   const formData = new FormData();
   formData.append("id", currentQuestion.id);
   formData.append("choice", choice);
-
+  
   fetch("php/submit_vote.php", {
     method: "POST",
     body: formData
   })
-    .then(res => res.json())
-    .then(votes => {
-      const total = votes.votes_a + votes.votes_b;
-      const percentA = Math.round((votes.votes_a / total) * 100);
-      const percentB = 100 - percentA;
-
-      document.getElementById("left-text-box").textContent = `${percentA}%`;
-      document.getElementById("right-text-box").textContent = `${percentB}%`;
-
-      const pickedPercent = choice === "a" ? percentA : percentB;
-
+  .then(res => res.json())
+  .then(votes => {
+    const total = votes.votes_a + votes.votes_b;
+    const percentA = Math.round((votes.votes_a / total) * 100);
+    const percentB = 100 - percentA;
+    
+    document.getElementById("left-text-box").textContent = `${percentA}%`;
+    document.getElementById("right-text-box").textContent = `${percentB}%`;
+    
+    const pickedPercent = choice === "a" ? percentA : percentB;
+    
+    console.log("Picked percent:", pickedPercent);
 function updateUniqueness(score, pickedPercent) {
   const diff = Math.abs(pickedPercent - 50);
   const k = 15;
@@ -46,14 +48,14 @@ function updateUniqueness(score, pickedPercent) {
 }
 
 uniquenessScore = updateUniqueness(uniquenessScore, pickedPercent);
-
+console.log("New uniquenessScore:", uniquenessScore);
+sessionStorage.setItem("uniquenessScore", uniquenessScore);
 
       userAnswers.push({ id: currentQuestion.id, picked: choice });
 
       // Save and redirect to review page every 10 questions
       if (userAnswers.length % 10 === 0) {
         sessionStorage.setItem("lastReview", JSON.stringify(userAnswers));
-        sessionStorage.setItem("uniquenessScore", uniquenessScore);
         userAnswers = [];
         window.location.href = "review.html";
       }
@@ -65,6 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("left-question-btn").addEventListener("click", () => submitVote("a"));
   document.getElementById("right-question-btn").addEventListener("click", () => submitVote("b"));
+  document.getElementById("next-button").onclick = () => {
+    animateQuestionCards(loadQuestion); // 🎯 play anim, then load
+  };
 
   const savedScore = sessionStorage.getItem("uniquenessScore");
   if (savedScore) uniquenessScore = parseInt(savedScore);

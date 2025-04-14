@@ -159,6 +159,23 @@
   border-radius: 8px;
   cursor: pointer;
 }
+@keyframes bounceSlideDown {
+  0% {
+    transform: translateY(-100vh);
+  }
+  70% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.review-appear {
+  animation: bounceSlideDown 1s ease-out forwards;
+}
+
+
 
   </style>
 </head>
@@ -242,6 +259,8 @@
     }
 
   </script>
-<script src="js/anims.js"></script>
+
+<script src="js/anims.js" defer></script>
+<script src ="js/review.js" defer></script>
 </body>
 </html>

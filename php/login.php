@@ -2,16 +2,22 @@
 session_start();
 include 'db_connect.php';
 
-$email = $_POST['email'] ?? '';
+$input = $_POST['input'] ?? ''; // can be email or username
 $password = $_POST['password'] ?? '';
 
-if (!$email || !$password) {
+if (!$input || !$password) {
   echo "Both fields required.";
   exit;
 }
 
-$stmt = $conn->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
-$stmt->bind_param("s", $email);
+// Check if input is an email (contains @) or a username
+if (strpos($input, '@') !== false) {
+  $stmt = $conn->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
+} else {
+  $stmt = $conn->prepare("SELECT id, username, password_hash FROM users WHERE username = ?");
+}
+
+$stmt->bind_param("s", $input);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -19,7 +25,7 @@ if ($user = $result->fetch_assoc()) {
   if (password_verify($password, $user['password_hash'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
-    header("title_page.html");
+    header("Location: ../title_page.html");
     exit;
   } else {
     echo "Wrong password.";
