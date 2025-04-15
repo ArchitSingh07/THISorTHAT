@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login - This or That</title>
-
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Minecraft Font -->
   <style>
     @font-face {
@@ -159,6 +159,38 @@
       </div>
     </div>
   </div>
+<script>
+  const googleClientId = "693293243421-hipdfj120fmc187nr9sguui1oncddksl.apps.googleusercontent.com";
+
+  window.onload = () => {
+    google.accounts.id.initialize({
+      client_id: googleClientId,
+      callback: handleGoogleCredential
+    });
+
+    // Manually trigger Google login on icon click
+    document.querySelector('img[alt="Google"]').addEventListener("click", () => {
+      google.accounts.id.prompt((notification) => {
+        if (notification.isNotDisplayed()) {
+          google.accounts.id.renderButton(document.body, { theme: "outline" });
+        }
+      });
+    });
+  };
+
+  function handleGoogleCredential(response) {
+    // Send the credential to the backend
+    fetch("php/google_callback.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: "credential=" + encodeURIComponent(response.credential)
+    })
+      .then(res => res.text())
+      .then(html => document.write(html)); // Loads the redirect with sessionStorage injected
+  }
+</script>
 
 </body>
 </html>

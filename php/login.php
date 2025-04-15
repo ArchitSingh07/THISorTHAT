@@ -12,9 +12,9 @@ if (!$input || !$password) {
 
 // Check if input is an email (contains @) or a username
 if (strpos($input, '@') !== false) {
-  $stmt = $conn->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
+  $stmt = $conn->prepare("SELECT id, username, password_hash, uniqueness_score FROM users WHERE email = ?");
 } else {
-  $stmt = $conn->prepare("SELECT id, username, password_hash FROM users WHERE username = ?");
+  $stmt = $conn->prepare("SELECT id, username, password_hash, uniqueness_score FROM users WHERE username = ?");
 }
 
 $stmt->bind_param("s", $input);

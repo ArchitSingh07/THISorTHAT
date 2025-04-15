@@ -87,8 +87,15 @@
     }
     
     function logoutUser() {
-      fetch("php/logout.php")
-      .then(() => {
+      if (window.google && google.accounts && google.accounts.id) {
+        google.accounts.id.disableAutoSelect(); // Prevent auto re-login
+      }
+
+      // Clear session storage
+      sessionStorage.clear();
+
+      // Destroy backend session
+      fetch("php/logout.php").then(() => {
         window.location.href = "login.html";
       });
     }
