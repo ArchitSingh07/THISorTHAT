@@ -25,8 +25,13 @@ if ($user = $result->fetch_assoc()) {
   if (password_verify($password, $user['password_hash'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
-    header("Location: ../title_page.html");
-    exit;
+    echo "
+            <script>
+              sessionStorage.setItem('uniquenessScore', {$user['uniqueness_score']});
+              window.location.href = '../title_page.html';
+            </script>";
+  exit;
+
   } else {
     echo "Wrong password.";
   }

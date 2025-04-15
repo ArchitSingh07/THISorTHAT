@@ -20,8 +20,9 @@ function submitVote(choice) {
   if (!currentQuestion) return;
   
   const formData = new FormData();
-  formData.append("id", currentQuestion.id);
-  formData.append("choice", choice);
+formData.append("id", currentQuestion.id);
+formData.append("choice", choice);
+formData.append("uniqueness", uniquenessScore);
   
   fetch("php/submit_vote.php", {
     method: "POST",
@@ -50,6 +51,7 @@ function updateUniqueness(score, pickedPercent) {
 uniquenessScore = updateUniqueness(uniquenessScore, pickedPercent);
 console.log("New uniquenessScore:", uniquenessScore);
 sessionStorage.setItem("uniquenessScore", uniquenessScore);
+document.getElementById("profile-score").textContent = uniquenessScore;
 
       userAnswers.push({ id: currentQuestion.id, picked: choice });
 

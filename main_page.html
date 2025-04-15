@@ -74,7 +74,7 @@
           const user = data.user;
           document.getElementById("profile-name").textContent = user.username;
           document.getElementById("profile-email").textContent = user.email;
-          document.getElementById("profile-score").textContent = user.uniqueness_score;
+          document.getElementById("profile-score").textContent = sessionStorage.getItem("uniquenessScore") || user.uniqueness_score;
         } else {
           alert("Session expired. Please login again.");
           window.location.href = "login.html";
