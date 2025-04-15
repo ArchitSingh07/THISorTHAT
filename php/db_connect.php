@@ -1,10 +1,13 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = ""; // Default in XAMPP
-$db = "thisorthat";
+$servername = "sql113.infinityfree.com";
+$username = "if0_38757519";
+$password = "XQS4ujprDyB";
+$dbname = "if0_38757519_thisorthat";
 
-$conn = new mysqli($host, $user, $pass, $db);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
